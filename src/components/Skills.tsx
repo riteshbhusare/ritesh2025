@@ -8,7 +8,6 @@ import {
   Cloud, 
   GitBranch, 
   Wrench,
-  FileText,
   Zap
 } from 'lucide-react';
 

@@ -1,17 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { motion, useScroll, useSpring } from 'framer-motion';
-import { 
-  Download, 
-  Mail, 
-  Phone, 
-  Github, 
-  Linkedin, 
-  Instagram,
-  ChevronUp,
-  Menu,
-  X
-} from 'lucide-react';
-import { useInView } from 'react-intersection-observer';
+import { motion, useScroll } from 'framer-motion';
+import { ChevronUp } from 'lucide-react';
 import Hero from './components/Hero';
 import About from './components/About';
 import Skills from './components/Skills';

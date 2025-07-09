@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { ChevronDown, Download, Github, Linkedin, Mail } from 'lucide-react';
 
 const Hero = () => {
@@ -12,7 +12,7 @@ const Hero = () => {
     }, 2000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [skills.length]);
 
   useEffect(() => {
     const blinkInterval = setInterval(() => {
