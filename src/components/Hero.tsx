@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Download, Code, Database, Cloud, Terminal } from 'lucide-react';
 import { useInView } from 'react-intersection-observer';
@@ -20,15 +20,6 @@ const Hero: React.FC<HeroProps> = ({ id, onSectionInView, onDownloadResume }) =>
       onSectionInView(id);
     }
   }, [inView, id, onSectionInView]);
-
-  const techTags = [
-    { name: 'Docker', icon: <Code className="w-4 h-4" /> },
-    { name: 'Linux', icon: <Terminal className="w-4 h-4" /> },
-    { name: 'Jenkins', icon: <Database className="w-4 h-4" /> },
-    { name: 'Git', icon: <Code className="w-4 h-4" /> },
-    { name: 'Kubernetes', icon: <Cloud className="w-4 h-4" /> },
-    { name: 'Python', icon: <Code className="w-4 h-4" /> }
-  ];
 
   return (
     <section
@@ -96,24 +87,9 @@ const Hero: React.FC<HeroProps> = ({ id, onSectionInView, onDownloadResume }) =>
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8, duration: 0.8 }}
-              className="flex flex-wrap gap-3"
             >
-              {techTags.map((tag, index) => (
-                <motion.div
-                  key={tag.name}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.8 + index * 0.1, duration: 0.5 }}
-                  className="flex items-center px-4 py-2 bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-full hover:border-blue-500/50 hover:bg-gray-800 transition-all duration-300 group"
-                >
-                  <span className="text-blue-400 mr-2 group-hover:scale-110 transition-transform">
-                    {tag.icon}
-                  </span>
-                  <span className="text-sm text-gray-300 group-hover:text-white">
-                    {tag.name}
-                  </span>
-                </motion.div>
-              ))}
+              {/* Animated Tech Carousel */}
+              <AnimatedTechCarousel />
             </motion.div>
           </motion.div>
 
@@ -179,6 +155,49 @@ const Hero: React.FC<HeroProps> = ({ id, onSectionInView, onDownloadResume }) =>
         </div>
       </div>
     </section>
+  );
+};
+
+const AnimatedTechCarousel: React.FC = () => {
+  const techNames = [
+    'Docker',
+    'Linux',
+    'Jenkins',
+    'Git',
+    'Kubernetes',
+    'Python'
+  ];
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % techNames.length);
+    }, 2500);
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <div className="relative flex items-center justify-center h-14 mt-4">
+      {techNames.map((name: string, idx: number) => {
+        const isActive = idx === activeIndex;
+        const isPrev = idx === (activeIndex - 1 + techNames.length) % techNames.length;
+        const isNext = idx === (activeIndex + 1) % techNames.length;
+        return (
+          <motion.div
+            key={name}
+            initial={false}
+            animate={isActive ? { opacity: 1, scale: 1, x: 0, zIndex: 10 } : { opacity: 0.3, scale: 0.85, x: isPrev ? -60 : isNext ? 60 : 0, zIndex: 1 }}
+            transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+            className={`absolute px-6 py-2 rounded-lg font-semibold text-base md:text-lg shadow-md transition-all duration-500
+              ${isActive ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white' : 'bg-gray-700/70 text-gray-300'}
+            `}
+            style={{ left: '50%', transform: `translateX(-50%)` }}
+          >
+            {name}
+          </motion.div>
+        );
+      })}
+    </div>
   );
 };
 

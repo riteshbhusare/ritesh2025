@@ -164,7 +164,8 @@ const Projects: React.FC<ProjectsProps> = ({ id, onSectionInView }) => {
                 </div>
                 
                 <div className="flex gap-4">
-                  {project.demo ? (
+                  {/* Only show demo button if not AstroGuru (Gradio + Gemini) or BMI Calculator Web App */}
+                  {(project.demo && project.title !== "AstroGuru (Gradio + Gemini)" && project.title !== "BMI Calculator Web App") ? (
                     <a
                       href={project.demo}
                       target="_blank"
