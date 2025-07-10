@@ -32,12 +32,7 @@ const Skills: React.FC<SkillsProps> = ({ id, onSectionInView }) => {
     { name: 'Docker', icon: <Database className="w-8 h-8" />, color: 'from-blue-400 to-blue-600' },
     { name: 'Linux', icon: <Terminal className="w-8 h-8" />, color: 'from-green-400 to-green-600' },
     { name: 'Jenkins', icon: <Wrench className="w-8 h-8" />, color: 'from-orange-400 to-orange-600' },
-    { name: 'Git', icon: <GitBranch className="w-8 h-8" />, color: 'from-red-400 to-red-600' },
-    { name: 'Kubernetes', icon: <Cloud className="w-8 h-8" />, color: 'from-purple-400 to-purple-600' },
-    { name: 'Bash', icon: <Terminal className="w-8 h-8" />, color: 'from-gray-400 to-gray-600' },
     { name: 'Python', icon: <Code className="w-8 h-8" />, color: 'from-yellow-400 to-yellow-600' },
-    { name: 'Java', icon: <Code className="w-8 h-8" />, color: 'from-indigo-400 to-indigo-600' },
-    { name: 'C', icon: <Code className="w-8 h-8" />, color: 'from-teal-400 to-teal-600' },
     { name: 'C++', icon: <Code className="w-8 h-8" />, color: 'from-cyan-400 to-cyan-600' },
     { name: 'Streamlit', icon: <Zap className="w-8 h-8" />, color: 'from-pink-400 to-pink-600' }
   ];

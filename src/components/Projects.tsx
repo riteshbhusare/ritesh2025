@@ -26,42 +26,54 @@ const Projects: React.FC<ProjectsProps> = ({ id, onSectionInView }) => {
       description: "Astrology chatbot powered by Gemini 2.5 and Gradio for interactive astrology consultations and predictions.",
       tech: ["Gradio", "Gemini 2.5", "Python", "AI"],
       icon: <Zap className="w-6 h-6" />,
-      gradient: "from-purple-500 to-pink-500"
+      gradient: "from-purple-500 to-pink-500",
+      github: "https://github.com/riteshbhusare/astro-guru-gradio-gemini",
+      demo: "https://huggingface.co/spaces/riteshbhusare/astro-guru-gradio-gemini"
     },
     {
       title: "BMI Calculator Web App",
       description: "Health tracker application built with Streamlit for calculating BMI and providing health recommendations.",
       tech: ["Streamlit", "Python", "Health Analytics"],
       icon: <Activity className="w-6 h-6" />,
-      gradient: "from-green-500 to-teal-500"
+      gradient: "from-green-500 to-teal-500",
+      github: "https://github.com/riteshbhusare/bmi-calculator-streamlit",
+      demo: "https://bmi-calculator.streamlit.app/"
     },
     {
       title: "Multi-Tool DevOps UI",
       description: "Unified dashboard combining multiple DevOps applications into a single, streamlined interface.",
       tech: ["DevOps", "Dashboard", "UI/UX"],
       icon: <Shield className="w-6 h-6" />,
-      gradient: "from-blue-500 to-cyan-500"
+      gradient: "from-blue-500 to-cyan-500",
+      github: "https://github.com/riteshbhusare/devops-dashboard-ui",
+      demo: null
     },
     {
       title: "Linux SSH Terminal Web App",
       description: "Web-based terminal interface for remotely executing Linux commands through SSH connections.",
       tech: ["SSH", "Linux", "Web Terminal"],
       icon: <Terminal className="w-6 h-6" />,
-      gradient: "from-orange-500 to-red-500"
+      gradient: "from-orange-500 to-red-500",
+      github: "https://github.com/riteshbhusare/linux-ssh-terminal-webapp",
+      demo: null
     },
     {
       title: "DevOps Dashboard UI",
       description: "Docker simulator with SSH capabilities for managing containerized applications remotely.",
       tech: ["Docker", "SSH", "Monitoring"],
       icon: <Shield className="w-6 h-6" />,
-      gradient: "from-indigo-500 to-purple-500"
+      gradient: "from-indigo-500 to-purple-500",
+      github: "https://github.com/riteshbhusare/devops-dashboard-ui",
+      demo: null
     },
     {
       title: "AstroGuru Gradio Notebook",
       description: "Jupyter-based version of AstroGuru with Gemini-powered astrology Q&A capabilities.",
       tech: ["Jupyter", "Gemini", "Python"],
       icon: <Zap className="w-6 h-6" />,
-      gradient: "from-yellow-500 to-orange-500"
+      gradient: "from-yellow-500 to-orange-500",
+      github: "https://github.com/riteshbhusare/astro-guru-gradio-notebook",
+      demo: null
     },
     {
       title: "IoT Traffic Light Simulation",
@@ -69,7 +81,9 @@ const Projects: React.FC<ProjectsProps> = ({ id, onSectionInView }) => {
       tech: ["IoT", "Simulation", "Real-time"],
       icon: <Activity className="w-6 h-6" />,
       gradient: "from-teal-500 to-green-500",
-      status: "In Progress"
+      status: "In Progress",
+      github: null,
+      demo: null
     },
     {
       title: "Bank Loan Assistant App",
@@ -77,7 +91,9 @@ const Projects: React.FC<ProjectsProps> = ({ id, onSectionInView }) => {
       tech: ["Finance", "API", "Database"],
       icon: <Shield className="w-6 h-6" />,
       gradient: "from-pink-500 to-purple-500",
-      status: "In Progress"
+      status: "In Progress",
+      github: null,
+      demo: null
     }
   ];
 
@@ -148,14 +164,28 @@ const Projects: React.FC<ProjectsProps> = ({ id, onSectionInView }) => {
                 </div>
                 
                 <div className="flex gap-4">
-                  <button className="flex items-center px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg hover:from-blue-600 hover:to-purple-700 transition-all duration-300 group/btn">
-                    <ExternalLink className="w-4 h-4 mr-2 group-hover/btn:scale-110 transition-transform" />
-                    View Demo
-                  </button>
-                  <button className="flex items-center px-4 py-2 bg-gray-700/50 text-gray-300 rounded-lg hover:bg-gray-600/50 hover:text-white transition-all duration-300 group/btn">
-                    <Github className="w-4 h-4 mr-2 group-hover/btn:scale-110 transition-transform" />
-                    GitHub
-                  </button>
+                  {project.demo ? (
+                    <a
+                      href={project.demo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg hover:from-blue-600 hover:to-purple-700 transition-all duration-300 group/btn"
+                    >
+                      <ExternalLink className="w-4 h-4 mr-2 group-hover/btn:scale-110 transition-transform" />
+                      View Demo
+                    </a>
+                  ) : null}
+                  {project.github ? (
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center px-4 py-2 bg-gray-700/50 text-gray-300 rounded-lg hover:bg-gray-600/50 hover:text-white transition-all duration-300 group/btn"
+                    >
+                      <Github className="w-4 h-4 mr-2 group-hover/btn:scale-110 transition-transform" />
+                      GitHub
+                    </a>
+                  ) : null}
                 </div>
               </div>
             </motion.div>
