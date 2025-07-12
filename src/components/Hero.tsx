@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { Download, Code, Database, Cloud, Terminal } from 'lucide-react';
+import { Download, MapPin, Mail, Phone } from 'lucide-react';
 import { useInView } from 'react-intersection-observer';
 
 interface HeroProps {
@@ -49,48 +49,38 @@ const Hero: React.FC<HeroProps> = ({ id, onSectionInView, onDownloadResume }) =>
                   Ritesh Bhusare
                 </span>
               </motion.h1>
-              
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4, duration: 0.8 }}
-                className="text-xl md:text-2xl text-gray-300 font-medium"
-              >
-                Aspiring Cloud Engineer | DevOps Enthusiast
-              </motion.p>
+              {/* Typing animation under the name */}
+              <TypingAnimation text="Aspiring Cloud Engineer | DevOps Enthusiast" />
             </div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6, duration: 0.8 }}
-            >
+            {/* Download Resume Button */}
+            <div>
               <button
-                onClick={onDownloadResume}
-                className="group relative inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-lg overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/25"
+                onClick={() => {}}
+                className="group relative inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-lg overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/25 cursor-pointer"
               >
                 <span className="relative z-10 flex items-center">
                   <Download className="w-5 h-5 mr-2" />
                   Download Resume
                 </span>
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-700"
-                  initial={{ opacity: 0 }}
-                  whileHover={{ opacity: 1 }}
-                  transition={{ duration: 0.3 }}
-                />
               </button>
-            </motion.div>
+            </div>
 
-            {/* Tech Tags */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.8, duration: 0.8 }}
-            >
-              {/* Animated Tech Carousel */}
-              <AnimatedTechCarousel />
-            </motion.div>
+            {/* Contact Details */}
+            <div className="flex flex-col sm:flex-row gap-4 mt-6">
+              <div className="flex items-center gap-2 bg-gray-800/60 px-4 py-2 rounded-lg">
+                <MapPin className="w-5 h-5 text-blue-400" />
+                <span className="text-gray-200">Chhatrapati Sambhajinagar</span>
+              </div>
+              <div className="flex items-center gap-2 bg-gray-800/60 px-4 py-2 rounded-lg">
+                <Phone className="w-5 h-5 text-green-400" />
+                <span className="text-gray-200">750756249</span>
+              </div>
+              <div className="flex items-center gap-2 bg-gray-800/60 px-4 py-2 rounded-lg">
+                <Mail className="w-5 h-5 text-purple-400" />
+                <span className="text-gray-200">riteshbhusare495@gmail.com</span>
+              </div>
+            </div>
           </motion.div>
 
           {/* Right Content - Neon Figure */}
@@ -158,46 +148,20 @@ const Hero: React.FC<HeroProps> = ({ id, onSectionInView, onDownloadResume }) =>
   );
 };
 
-const AnimatedTechCarousel: React.FC = () => {
-  const techNames = [
-    'Docker',
-    'Linux',
-    'Jenkins',
-    'Git',
-    'Kubernetes',
-    'Python'
-  ];
-  const [activeIndex, setActiveIndex] = useState(0);
-
+const TypingAnimation: React.FC<{ text: string }> = ({ text }) => {
+  const [displayed, setDisplayed] = useState('');
   useEffect(() => {
+    let i = 0;
+    setDisplayed('');
     const interval = setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % techNames.length);
-    }, 2500);
+      setDisplayed((prev) => (i < text.length ? prev + text[i] : prev));
+      i++;
+      if (i >= text.length) clearInterval(interval);
+    }, 60);
     return () => clearInterval(interval);
-  }, []);
-
+  }, [text]);
   return (
-    <div className="relative flex items-center justify-center h-14 mt-4">
-      {techNames.map((name: string, idx: number) => {
-        const isActive = idx === activeIndex;
-        const isPrev = idx === (activeIndex - 1 + techNames.length) % techNames.length;
-        const isNext = idx === (activeIndex + 1) % techNames.length;
-        return (
-          <motion.div
-            key={name}
-            initial={false}
-            animate={isActive ? { opacity: 1, scale: 1, x: 0, zIndex: 10 } : { opacity: 0.3, scale: 0.85, x: isPrev ? -60 : isNext ? 60 : 0, zIndex: 1 }}
-            transition={{ type: 'spring', stiffness: 400, damping: 30 }}
-            className={`absolute px-6 py-2 rounded-lg font-semibold text-base md:text-lg shadow-md transition-all duration-500
-              ${isActive ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white' : 'bg-gray-700/70 text-gray-300'}
-            `}
-            style={{ left: '50%', transform: `translateX(-50%)` }}
-          >
-            {name}
-          </motion.div>
-        );
-      })}
-    </div>
+    <span className="text-xl md:text-2xl text-gray-300 font-medium block min-h-[2.5rem]">{displayed}</span>
   );
 };
 
