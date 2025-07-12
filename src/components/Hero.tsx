@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Download, MapPin, Mail, Phone } from 'lucide-react';
 import { useInView } from 'react-intersection-observer';
-import profileImg from '../assets/profile.jpg';
+import profileImg from '../assets/profile.jpg.jpg';
 
 interface HeroProps {
   id: string;
@@ -57,7 +57,7 @@ const Hero: React.FC<HeroProps> = ({ id, onSectionInView, onDownloadResume }) =>
             {/* Download Resume Button */}
             <div>
               <button
-                onClick={() => {}}
+                onClick={onDownloadResume}
                 className="group relative inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-lg overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/25 cursor-pointer"
               >
                 <span className="relative z-10 flex items-center">

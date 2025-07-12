@@ -49,9 +49,9 @@ function App() {
         id="hero"
         onSectionInView={setActiveSection}
         onDownloadResume={() => {
-          // Create a dummy resume download
+          // Download the actual resume file
           const link = document.createElement('a');
-          link.href = '#';
+          link.href = '/resume.pdf';
           link.download = 'Ritesh_Bhusare_Resume.pdf';
           link.click();
         }}
