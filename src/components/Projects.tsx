@@ -282,18 +282,16 @@ const Projects: React.FC<ProjectsProps> = ({ id, onSectionInView }) => {
                   </div>
                   
                   <div className="flex gap-4">
-                    {/* Remove Hugging Face demo links, update GitHub links if needed */}
-                    {project.github ? (
-                      <a
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center px-4 py-2 bg-gray-700/50 text-gray-300 rounded-lg hover:bg-gray-600/50 hover:text-white transition-all duration-300 group/btn"
-                      >
-                        <Github className="w-4 h-4 mr-2 group-hover/btn:scale-110 transition-transform" />
-                        GitHub
-                      </a>
-                    ) : null}
+                    {/* GitHub icon links to main profile */}
+                    <a
+                      href="https://github.com/riteshbhusare"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center px-4 py-2 bg-gray-700/50 text-gray-300 rounded-lg hover:bg-gray-600/50 hover:text-white transition-all duration-300 group/btn"
+                    >
+                      <Github className="w-4 h-4 mr-2 group-hover/btn:scale-110 transition-transform" />
+                      GitHub
+                    </a>
                   </div>
                 </div>
               </motion.div>

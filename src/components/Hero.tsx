@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Download, MapPin, Mail, Phone } from 'lucide-react';
 import { useInView } from 'react-intersection-observer';
+import profileImg from '../assets/profile.jpg';
 
 interface HeroProps {
   id: string;
@@ -83,63 +84,20 @@ const Hero: React.FC<HeroProps> = ({ id, onSectionInView, onDownloadResume }) =>
             </div>
           </motion.div>
 
-          {/* Right Content - Neon Figure */}
+          {/* Right Content - User Photo */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.4, duration: 0.8 }}
             className="relative flex justify-center items-center"
           >
-            <div className="relative w-80 h-96 md:w-96 md:h-[500px]">
-              {/* Neon Outline Figure */}
-              <div className="absolute inset-0 bg-gradient-to-b from-blue-500/20 to-purple-600/20 rounded-3xl blur-xl" />
-              <div className="relative w-full h-full border-2 border-blue-400/50 rounded-3xl bg-gradient-to-b from-blue-900/10 to-purple-900/10 backdrop-blur-sm overflow-hidden">
-                
-                {/* Animated Glow Effect */}
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-500/10"
-                  animate={{
-                    opacity: [0.3, 0.6, 0.3],
-                  }}
-                  transition={{
-                    duration: 3,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                  }}
-                />
-                
-                {/* Placeholder for actual figure */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-32 h-32 bg-gradient-to-br from-blue-400 to-purple-600 rounded-full opacity-20 animate-pulse" />
-                </div>
-                
-                {/* Floating Elements */}
-                <motion.div
-                  className="absolute top-10 left-10 w-3 h-3 bg-blue-400 rounded-full"
-                  animate={{
-                    y: [0, -10, 0],
-                    opacity: [0.5, 1, 0.5]
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                  }}
-                />
-                <motion.div
-                  className="absolute bottom-16 right-12 w-2 h-2 bg-purple-400 rounded-full"
-                  animate={{
-                    y: [0, 10, 0],
-                    opacity: [0.5, 1, 0.5]
-                  }}
-                  transition={{
-                    duration: 2.5,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                    delay: 1
-                  }}
-                />
-              </div>
+            <div className="relative w-80 h-96 md:w-96 md:h-[500px] flex items-center justify-center">
+              <img
+                src={profileImg}
+                alt="Ritesh Bhusare profile"
+                className="object-cover w-64 h-64 md:w-80 md:h-80 rounded-3xl shadow-2xl border-4 border-blue-400/60 bg-gradient-to-br from-blue-100/20 to-purple-100/20"
+                style={{ maxHeight: '100%', maxWidth: '100%' }}
+              />
             </div>
           </motion.div>
         </div>
