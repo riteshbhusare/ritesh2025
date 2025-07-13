@@ -74,141 +74,61 @@ const Projects: React.FC<ProjectsProps> = ({ id, onSectionInView }) => {
       gradient: "from-yellow-500 to-orange-500",
       github: "https://github.com/riteshbhusare/astro-guru-gradio-notebook",
       demo: null
-    },
-    {
-      title: "IoT Traffic Light Simulation",
-      description: "Real-time traffic signal simulation project for IoT applications and smart city solutions.",
-      tech: ["IoT", "Simulation", "Real-time"],
-      icon: <Activity className="w-6 h-6" />,
-      gradient: "from-teal-500 to-green-500",
-      status: "In Progress",
-      github: null,
-      demo: null
-    },
-    {
-      title: "Bank Loan Assistant App",
-      description: "Application connecting users and banks for streamlined loan applications and approvals.",
-      tech: ["Finance", "API", "Database"],
-      icon: <Shield className="w-6 h-6" />,
-      gradient: "from-pink-500 to-purple-500",
-      status: "In Progress",
-      github: null,
-      demo: null
     }
   ];
 
   // LinuxWorld Projects data
   const linuxWorldProjects = [
     {
-      title: 'astroguru.ipynb',
+      title: 'astroguru',
       description: 'AstroGuru Jupyter Notebook for astrology Q&A.',
       tech: ['Python', 'Jupyter'],
       icon: <Code className="w-6 h-6" />, 
-      gradient: "from-yellow-500 to-orange-500",
+      gradient: "from-purple-500 to-pink-500",
       category: 'Python',
       github: 'https://github.com/riteshbhusare/Summer_Intership2025/blob/main/astroguru.ipynb',
-      linkedin: ''
+      linkedin: 'https://www.linkedin.com/posts/ritesh-bhusare-5a209330b_astrologyapp-pythondeveloper-gradioapp-activity-7347291630053265408-Zzrv?utm_source=share&utm_medium=member_desktop&rcm=ACoAAE7bIIoBWkUAwSHNBi_hpDHzs8pczN-zmSI'
     },
     {
-      title: 'bmi.py',
+      title: 'bmi',
       description: 'BMI calculator script in Python.',
       tech: ['Python'],
       icon: <Code className="w-6 h-6" />, 
-      gradient: "from-green-500 to-teal-500",
+      gradient: "from-purple-500 to-pink-500",
       category: 'Python',
       github: 'https://github.com/riteshbhusare/Summer_Intership2025/blob/main/bmi.py',
-      linkedin: ''
+      linkedin: 'https://www.linkedin.com/posts/ritesh-bhusare-5a209330b_myproject-streamlitapp-pythonproject-activity-7346403007892193280-fOnn?utm_source=share&utm_medium=member_desktop&rcm=ACoAAE7bIIoBWkUAwSHNBi_hpDHzs8pczN-zmSI'
     },
     {
-      title: 'email.py',
+      title: 'email',
       description: 'Automate sending emails with Python.',
       tech: ['Python'],
       icon: <Code className="w-6 h-6" />, 
-      gradient: "from-blue-500 to-cyan-500",
+      gradient: "from-purple-500 to-pink-500",
       category: 'Python',
       github: 'https://github.com/riteshbhusare/Summer_Intership2025/blob/main/email.py',
-      linkedin: ''
+      linkedin: 'https://www.linkedin.com/posts/ritesh-bhusare-5a209330b_python-streamlit-linuxworld-activity-7348569413303820288-zvvB?utm_source=share&utm_medium=member_desktop&rcm=ACoAAE7bIIoBWkUAwSHNBi_hpDHzs8pczN-zmSI'
     },
     {
-      title: 'facebook.py',
+      title: 'facebook',
       description: 'Facebook automation script.',
       tech: ['Python'],
       icon: <Code className="w-6 h-6" />, 
       gradient: "from-purple-500 to-pink-500",
       category: 'Python',
       github: 'https://github.com/riteshbhusare/Summer_Intership2025/blob/main/facebook.py',
-      linkedin: ''
+      linkedin: 'https://www.linkedin.com/posts/ritesh-bhusare-5a209330b_linuxworld-pythonprojects-automationui-activity-7349414837161984000-bOsi?utm_source=share&utm_medium=member_desktop&rcm=ACoAAE7bIIoBWkUAwSHNBi_hpDHzs8pczN-zmSI'
     },
     {
-      title: 'insta.py',
+      title: 'instagram',
       description: 'Instagram automation script.',
       tech: ['Python'],
       icon: <Code className="w-6 h-6" />, 
-      gradient: "from-pink-500 to-red-500",
+      gradient: "from-purple-500 to-pink-500",
       category: 'Python',
       github: 'https://github.com/riteshbhusare/Summer_Intership2025/blob/main/insta.py',
-      linkedin: ''
-    },
-    {
-      title: 'linked.py',
-      description: 'LinkedIn automation script.',
-      tech: ['Python'],
-      icon: <Code className="w-6 h-6" />, 
-      gradient: "from-indigo-500 to-purple-500",
-      category: 'Python',
-      github: 'https://github.com/riteshbhusare/Summer_Intership2025/blob/main/linked.py',
-      linkedin: ''
-    },
-    {
-      title: 'phone.py',
-      description: 'Phone number automation script.',
-      tech: ['Python'],
-      icon: <Code className="w-6 h-6" />, 
-      gradient: "from-teal-500 to-green-500",
-      category: 'Python',
-      github: 'https://github.com/riteshbhusare/Summer_Intership2025/blob/main/phone.py',
-      linkedin: ''
-    },
-    {
-      title: 'sms.py',
-      description: 'SMS automation script.',
-      tech: ['Python'],
-      icon: <Code className="w-6 h-6" />, 
-      gradient: "from-orange-500 to-red-500",
-      category: 'Python',
-      github: 'https://github.com/riteshbhusare/Summer_Intership2025/blob/main/sms.py',
-      linkedin: ''
-    },
-    {
-      title: 'twitter.py',
-      description: 'Twitter automation script.',
-      tech: ['Python'],
-      icon: <Code className="w-6 h-6" />, 
-      gradient: "from-cyan-500 to-blue-500",
-      category: 'Python',
-      github: 'https://github.com/riteshbhusare/Summer_Intership2025/blob/main/twitter.py',
-      linkedin: ''
-    },
-    {
-      title: 'whatapp.py',
-      description: 'WhatsApp automation script.',
-      tech: ['Python'],
-      icon: <Code className="w-6 h-6" />, 
-      gradient: "from-green-500 to-emerald-500",
-      category: 'Python',
-      github: 'https://github.com/riteshbhusare/Summer_Intership2025/blob/main/whatapp.py',
-      linkedin: ''
-    },
-    {
-      title: 'a.html',
-      description: 'HTML project file.',
-      tech: ['HTML'],
-      icon: <Terminal className="w-6 h-6" />, 
-      gradient: "from-gray-500 to-slate-500",
-      category: 'Linux',
-      github: 'https://github.com/riteshbhusare/Summer_Intership2025/blob/main/a.html',
-      linkedin: ''
-    },
+      linkedin: 'https://www.linkedin.com/posts/ritesh-bhusare-5a209330b_python-streamlit-instagaramautomation-activity-7349374830925754369-02gr?utm_source=share&utm_medium=member_desktop&rcm=ACoAAE7bIIoBWkUAwSHNBi_hpDHzs8pczN-zmSI'
+    }
   ];
 
   const linuxWorldCategories = ['Python', 'Linux', 'Docker', 'Git & GitHub', 'JavaScript + Docker Based Task'];
@@ -255,11 +175,6 @@ const Projects: React.FC<ProjectsProps> = ({ id, onSectionInView }) => {
                     <div className={`p-3 rounded-xl bg-gradient-to-r ${project.gradient} text-white`}>
                       {project.icon}
                     </div>
-                    {project.status && (
-                      <span className="px-3 py-1 text-xs bg-yellow-500/20 text-yellow-400 rounded-full border border-yellow-500/30">
-                        {project.status}
-                      </span>
-                    )}
                   </div>
                   
                   <h3 className="text-xl font-bold text-white mb-3 group-hover:text-gray-100 transition-colors">

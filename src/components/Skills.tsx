@@ -34,7 +34,8 @@ const Skills: React.FC<SkillsProps> = ({ id, onSectionInView }) => {
     { name: 'Jenkins', icon: <Wrench className="w-8 h-8" />, color: 'from-orange-400 to-orange-600' },
     { name: 'Python', icon: <Code className="w-8 h-8" />, color: 'from-yellow-400 to-yellow-600' },
     { name: 'C++', icon: <Code className="w-8 h-8" />, color: 'from-cyan-400 to-cyan-600' },
-    { name: 'Streamlit', icon: <Zap className="w-8 h-8" />, color: 'from-pink-400 to-pink-600' }
+    { name: 'Streamlit', icon: <Zap className="w-8 h-8" />, color: 'from-pink-400 to-pink-600' },
+    { name: 'Cloud', icon: <Cloud className="w-8 h-8" />, color: 'from-purple-400 to-blue-600' }
   ];
 
   return (

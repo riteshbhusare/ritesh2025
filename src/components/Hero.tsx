@@ -71,15 +71,15 @@ const Hero: React.FC<HeroProps> = ({ id, onSectionInView, onDownloadResume }) =>
             <div className="flex flex-col sm:flex-row gap-4 mt-6">
               <div className="flex items-center gap-2 bg-gray-800/60 px-4 py-2 rounded-lg">
                 <MapPin className="w-5 h-5 text-blue-400" />
-                <span className="text-gray-200">Chhatrapati Sambhajinagar</span>
+                <span className="text-gray-200">Maharashtra</span>
               </div>
               <div className="flex items-center gap-2 bg-gray-800/60 px-4 py-2 rounded-lg">
                 <Phone className="w-5 h-5 text-green-400" />
-                <span className="text-gray-200">750756249</span>
+                <span className="text-gray-200">75075***</span>
               </div>
               <div className="flex items-center gap-2 bg-gray-800/60 px-4 py-2 rounded-lg">
                 <Mail className="w-5 h-5 text-purple-400" />
-                <span className="text-gray-200">riteshbhusare495@gmail.com</span>
+                <span className="text-gray-200">ritesh495@gmail.com</span>
               </div>
             </div>
           </motion.div>
@@ -95,7 +95,7 @@ const Hero: React.FC<HeroProps> = ({ id, onSectionInView, onDownloadResume }) =>
               <img
                 src={profileImg}
                 alt="Ritesh Bhusare profile"
-                className="object-cover w-64 h-64 md:w-80 md:h-80 rounded-3xl shadow-2xl border-4 border-blue-400/60 bg-gradient-to-br from-blue-100/20 to-purple-100/20"
+                className="object-cover w-72 h-72 md:w-[22rem] md:h-[22rem] scale-110 rounded-3xl shadow-2xl border-4 border-blue-400/60 bg-gradient-to-br from-blue-100/20 to-purple-100/20"
                 style={{ maxHeight: '100%', maxWidth: '100%' }}
               />
             </div>
@@ -111,11 +111,22 @@ const TypingAnimation: React.FC<{ text: string }> = ({ text }) => {
   useEffect(() => {
     let i = 0;
     setDisplayed('');
-    const interval = setInterval(() => {
-      setDisplayed((prev) => (i < text.length ? prev + text[i] : prev));
-      i++;
-      if (i >= text.length) clearInterval(interval);
-    }, 60);
+    let interval: ReturnType<typeof setInterval>;
+    const type = () => {
+      interval = setInterval(() => {
+        setDisplayed((prev) => (i < text.length ? prev + text[i] : prev));
+        i++;
+        if (i >= text.length) {
+          clearInterval(interval);
+          setTimeout(() => {
+            i = 0;
+            setDisplayed('');
+            type();
+          }, 1200);
+        }
+      }, 60);
+    };
+    type();
     return () => clearInterval(interval);
   }, [text]);
   return (
