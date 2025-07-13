@@ -84,7 +84,7 @@ const Projects: React.FC<ProjectsProps> = ({ id, onSectionInView }) => {
       description: 'AstroGuru Jupyter Notebook for astrology Q&A.',
       tech: ['Python', 'Jupyter'],
       icon: <Code className="w-6 h-6" />, 
-      gradient: "from-purple-500 to-pink-500",
+      gradient: "from-yellow-500 to-orange-500",
       category: 'Python',
       github: 'https://github.com/riteshbhusare/Summer_Intership2025/blob/main/astroguru.ipynb',
       linkedin: 'https://www.linkedin.com/posts/ritesh-bhusare-5a209330b_astrologyapp-pythondeveloper-gradioapp-activity-7347291630053265408-Zzrv?utm_source=share&utm_medium=member_desktop&rcm=ACoAAE7bIIoBWkUAwSHNBi_hpDHzs8pczN-zmSI'
@@ -94,7 +94,7 @@ const Projects: React.FC<ProjectsProps> = ({ id, onSectionInView }) => {
       description: 'BMI calculator script in Python.',
       tech: ['Python'],
       icon: <Code className="w-6 h-6" />, 
-      gradient: "from-purple-500 to-pink-500",
+      gradient: "from-green-500 to-teal-500",
       category: 'Python',
       github: 'https://github.com/riteshbhusare/Summer_Intership2025/blob/main/bmi.py',
       linkedin: 'https://www.linkedin.com/posts/ritesh-bhusare-5a209330b_myproject-streamlitapp-pythonproject-activity-7346403007892193280-fOnn?utm_source=share&utm_medium=member_desktop&rcm=ACoAAE7bIIoBWkUAwSHNBi_hpDHzs8pczN-zmSI'
@@ -104,7 +104,7 @@ const Projects: React.FC<ProjectsProps> = ({ id, onSectionInView }) => {
       description: 'Automate sending emails with Python.',
       tech: ['Python'],
       icon: <Code className="w-6 h-6" />, 
-      gradient: "from-purple-500 to-pink-500",
+      gradient: "from-blue-500 to-cyan-500",
       category: 'Python',
       github: 'https://github.com/riteshbhusare/Summer_Intership2025/blob/main/email.py',
       linkedin: 'https://www.linkedin.com/posts/ritesh-bhusare-5a209330b_python-streamlit-linuxworld-activity-7348569413303820288-zvvB?utm_source=share&utm_medium=member_desktop&rcm=ACoAAE7bIIoBWkUAwSHNBi_hpDHzs8pczN-zmSI'
@@ -124,10 +124,60 @@ const Projects: React.FC<ProjectsProps> = ({ id, onSectionInView }) => {
       description: 'Instagram automation script.',
       tech: ['Python'],
       icon: <Code className="w-6 h-6" />, 
-      gradient: "from-purple-500 to-pink-500",
+      gradient: "from-pink-500 to-red-500",
       category: 'Python',
       github: 'https://github.com/riteshbhusare/Summer_Intership2025/blob/main/insta.py',
       linkedin: 'https://www.linkedin.com/posts/ritesh-bhusare-5a209330b_python-streamlit-instagaramautomation-activity-7349374830925754369-02gr?utm_source=share&utm_medium=member_desktop&rcm=ACoAAE7bIIoBWkUAwSHNBi_hpDHzs8pczN-zmSI'
+    },
+    {
+      title: 'linked',
+      description: 'LinkedIn automation script.',
+      tech: ['Python'],
+      icon: <Code className="w-6 h-6" />, 
+      gradient: "from-indigo-500 to-purple-500",
+      category: 'Python',
+      github: 'https://github.com/riteshbhusare/Summer_Intership2025/blob/main/linked.py',
+      linkedin: 'https://www.linkedin.com/posts/ritesh-bhusare-5a209330b_vimaldaga-linuxworld-linkedintools-activity-7349384569311100928-NncG?utm_source=share&utm_medium=member_desktop&rcm=ACoAAE7bIIoBWkUAwSHNBi_hpDHzs8pczN-zmSI'
+    },
+    {
+      title: 'phone',
+      description: 'Phone number automation script.',
+      tech: ['Python'],
+      icon: <Code className="w-6 h-6" />, 
+      gradient: "from-teal-500 to-green-500",
+      category: 'Python',
+      github: 'https://github.com/riteshbhusare/Summer_Intership2025/blob/main/phone.py',
+      linkedin: 'https://www.linkedin.com/posts/ritesh-bhusare-5a209330b_python-automation-browserbasedtool-activity-7349133686463737856-JpIb?utm_source=share&utm_medium=member_desktop&rcm=ACoAAE7bIIoBWkUAwSHNBi_hpDHzs8pczN-zmSI'
+    },
+    {
+      title: 'sms',
+      description: 'SMS automation script.',
+      tech: ['Python'],
+      icon: <Code className="w-6 h-6" />, 
+      gradient: "from-orange-500 to-red-500",
+      category: 'Python',
+      github: 'https://github.com/riteshbhusare/Summer_Intership2025/blob/main/sms.py',
+      linkedin: 'https://www.linkedin.com/posts/ritesh-bhusare-5a209330b_python-flask-linuxworld-activity-7349083154462179332-lAPk?utm_source=share&utm_medium=member_desktop&rcm=ACoAAE7bIIoBWkUAwSHNBi_hpDHzs8pczN-zmSI'
+    },
+    {
+      title: 'twitter',
+      description: 'Twitter automation script.',
+      tech: ['Python'],
+      icon: <Code className="w-6 h-6" />, 
+      gradient: "from-cyan-500 to-blue-500",
+      category: 'Python',
+      github: 'https://github.com/riteshbhusare/Summer_Intership2025/blob/main/twitter.py',
+      linkedin: 'https://www.linkedin.com/posts/ritesh-bhusare-5a209330b_linuxworld-pythonprojects-automationui-activity-7349414837161984000-bOsi?utm_source=share&utm_medium=member_desktop&rcm=ACoAAE7bIIoBWkUAwSHNBi_hpDHzs8pczN-zmSI'
+    },
+    {
+      title: 'whatsapp',
+      description: 'WhatsApp automation script.',
+      tech: ['Python'],
+      icon: <Code className="w-6 h-6" />, 
+      gradient: "from-green-500 to-emerald-500",
+      category: 'Python',
+      github: 'https://github.com/riteshbhusare/Summer_Intership2025/blob/main/whatapp.py',
+      linkedin: 'https://www.linkedin.com/posts/ritesh-bhusare-5a209330b_python-streamlit-whatsappautomation-activity-7349294909431906304-x-kd?utm_source=share&utm_medium=member_desktop&rcm=ACoAAE7bIIoBWkUAwSHNBi_hpDHzs8pczN-zmSI'
     }
   ];
 
@@ -291,7 +341,7 @@ const Projects: React.FC<ProjectsProps> = ({ id, onSectionInView }) => {
                         href={project.linkedin}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center px-4 py-2 bg-blue-700/50 text-blue-200 rounded-lg hover:bg-blue-600/50 hover:text-white transition-all duration-300 group/btn"
+                        className="flex items-center px-4 py-2 bg-gray-700/50 text-gray-300 rounded-lg hover:bg-gray-600/50 hover:text-white transition-all duration-300 group/btn"
                       >
                         <ExternalLink className="w-4 h-4 mr-2 group-hover/btn:scale-110 transition-transform" />
                         LinkedIn
