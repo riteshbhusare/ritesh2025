@@ -6,7 +6,6 @@ import {
   Terminal, 
   Database, 
   Cloud, 
-  GitBranch, 
   Wrench,
   Zap
 } from 'lucide-react';
