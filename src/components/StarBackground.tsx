@@ -154,7 +154,7 @@ const StarBackground: React.FC = () => {
       starsRef.current.forEach(star => {
         star.z -= star.speed;
         if (star.z <= 0) {
-          star.z = 1000;
+          star.z = 999.99;
           star.x = Math.random() * canvas.width;
           star.y = Math.random() * canvas.height;
         }
@@ -166,7 +166,7 @@ const StarBackground: React.FC = () => {
         asteroid.z -= asteroid.speed;
         asteroid.rotation += asteroid.rotationSpeed;
         if (asteroid.z <= 0) {
-          asteroid.z = 1000;
+          asteroid.z = 999.99;
           asteroid.x = Math.random() * canvas.width;
           asteroid.y = Math.random() * canvas.height;
         }
