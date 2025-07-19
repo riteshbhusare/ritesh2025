@@ -8,7 +8,6 @@ import Projects from './components/Projects';
 import Contact from './components/Contact';
 import Navigation from './components/Navigation';
 import ScrollProgress from './components/ScrollProgress';
-import StarBackground from './components/StarBackground';
 
 function App() {
   const [activeSection, setActiveSection] = useState('hero');
@@ -37,8 +36,6 @@ function App() {
 
   return (
     <div className="bg-black text-white overflow-x-hidden">
-      <StarBackground />
-      
       <Navigation 
         activeSection={activeSection}
         onSectionClick={scrollToSection}
