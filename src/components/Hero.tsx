@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Download, MapPin, Mail, Phone } from 'lucide-react';
 import { useInView } from 'react-intersection-observer';
-import profileImg from '../assets/profile.jpg.jpg';
+import selfImg from '../assets/self.jpg';
+import StarBackground from './StarBackground';
 
 interface HeroProps {
   id: string;
@@ -93,7 +94,7 @@ const Hero: React.FC<HeroProps> = ({ id, onSectionInView, onDownloadResume }) =>
           >
             <div className="relative w-80 h-96 md:w-96 md:h-[500px] flex items-center justify-center">
               <img
-                src={profileImg}
+                src={selfImg}
                 alt="Ritesh Bhusare profile"
                 className="object-cover w-72 h-72 md:w-[22rem] md:h-[22rem] scale-110 rounded-3xl shadow-2xl border-4 border-blue-400/60 bg-gradient-to-br from-blue-100/20 to-purple-100/20"
                 style={{ maxHeight: '100%', maxWidth: '100%' }}
