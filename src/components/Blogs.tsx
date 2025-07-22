@@ -65,6 +65,7 @@ const Blogs: React.FC<BlogsProps> = ({ id, onSectionInView }) => {
     },
     {
       title: "My LinuxWorld Training Experience",
+      title: "Ctrl+C and Ctrl+Z",
       description: "A look into hands-on training with Linux, Python, and real-world DevOps use cases at LinuxWorld Workshop.",
       category: "Linux",
       url: "https://www.linkedin.com/posts/ritesh-bhusare-5a209330b_linuxworld-python-linux-activity-7350173412130025472-7d64",
@@ -85,7 +86,7 @@ const Blogs: React.FC<BlogsProps> = ({ id, onSectionInView }) => {
       gradient: "from-teal-500 to-cyan-500"
     },
     {
-      title: "LinuxWorld 2025 – My Journey",
+      title: "Linux Used by Companies",
       description: "Insights from attending the LinuxWorld 2025 workshop, where we explored Linux fundamentals and real-world DevOps applications.",
       category: "Linux",
       url: "https://www.linkedin.com/posts/ritesh-bhusare-5a209330b_linux-linuxworld-linux2025-activity-7349614730912620544-VH5W",
