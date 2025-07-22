@@ -6,6 +6,7 @@ import About from './components/About';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
+import Blogs from './components/Blogs';
 import Navigation from './components/Navigation';
 import ScrollProgress from './components/ScrollProgress';
 import CustomCursor from './components/CustomCursor';
@@ -80,6 +81,10 @@ function App() {
         onSectionInView={setActiveSection}
       />
 
+      <Blogs 
+        id="blogs"
+        onSectionInView={setActiveSection}
+      />
       {/* Floating Action Button */}
       <motion.button
         initial={{ opacity: 0, scale: 0 }}
