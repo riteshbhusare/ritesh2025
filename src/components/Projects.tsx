@@ -214,48 +214,61 @@ const Projects: React.FC<ProjectsProps> = ({ id, onSectionInView }) => {
                   delay: index * 0.1,
                   ease: "easeOut"
                 }}
-                className="group relative"
+                className="group relative cursor-pointer"
               >
-                {/* Glow effect */}
-                <div className={`absolute inset-0 bg-gradient-to-r ${project.gradient} rounded-2xl blur-xl opacity-20 group-hover:opacity-40 transition-all duration-300`} />
+                {/* Enhanced Glow effect */}
+                <div className={`absolute inset-0 bg-gradient-to-r ${project.gradient} rounded-2xl blur-xl opacity-20 group-hover:opacity-60 transition-all duration-500`} />
+                <div className={`absolute inset-0 bg-gradient-to-r ${project.gradient} rounded-2xl blur-2xl opacity-0 group-hover:opacity-30 transition-all duration-500`} />
                 
                 {/* Card */}
-                <div className="relative bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-6 hover:border-gray-600 transition-all duration-300 group-hover:transform group-hover:scale-105">
+                <div className="relative bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-6 hover:border-[#00f8e1]/50 transition-all duration-500 group-hover:transform group-hover:scale-105 group-hover:shadow-2xl group-hover:shadow-[#00f8e1]/20 h-full flex flex-col">
                   <div className="flex items-start justify-between mb-4">
-                    <div className={`p-3 rounded-xl bg-gradient-to-r ${project.gradient} text-white group-hover:scale-110 transition-transform duration-300`}>
+                    <div className={`p-3 rounded-xl bg-gradient-to-r ${project.gradient} text-white group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg`}>
                       {project.icon}
                     </div>
                   </div>
                   
-                  <h3 className="text-xl font-bold text-white mb-3 group-hover:text-gray-100 transition-colors">
+                  <h3 className="text-xl font-bold text-white mb-3 group-hover:text-[#00f8e1] transition-colors duration-300">
                     {project.title}
                   </h3>
                   
-                  <p className="text-gray-300 mb-4 leading-relaxed">
+                  <p className="text-gray-300 mb-4 leading-relaxed flex-grow">
                     {project.description}
                   </p>
                   
+                  {/* Tech Stack Badges */}
                   <div className="flex flex-wrap gap-2 mb-6">
                     {project.tech.map((tech) => (
                       <span
                         key={tech}
-                        className="px-3 py-1 text-xs bg-gray-700/50 text-gray-300 rounded-full border border-gray-600/50"
+                        className="px-3 py-1 text-xs bg-gray-700/50 text-gray-300 rounded-full border border-gray-600/50 hover:border-[#00f8e1]/50 hover:text-[#00f8e1] transition-all duration-300 cursor-pointer"
                       >
                         {tech}
                       </span>
                     ))}
                   </div>
                   
-                  <div className="flex gap-4">
-                    {/* GitHub icon links to main profile */}
+                  {/* Action Buttons */}
+                  <div className="flex gap-3 mt-auto">
+                    {project.demo && (
+                      <a
+                        href={project.demo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 flex items-center justify-center px-4 py-2 bg-gradient-to-r from-[#00f8e1] to-cyan-400 text-black font-semibold rounded-lg hover:from-[#00f8e1]/90 hover:to-cyan-400/90 hover:scale-105 transition-all duration-300 group/btn shadow-lg hover:shadow-[#00f8e1]/25"
+                      >
+                        <ExternalLink className="w-4 h-4 mr-2 group-hover/btn:scale-110 transition-transform" />
+                        Demo
+                      </a>
+                    )}
                     <a
-                      href="https://github.com/riteshbhusare"
+                      href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center px-4 py-2 bg-gray-700/50 text-gray-300 rounded-lg hover:bg-gray-600/50 hover:text-white transition-all duration-300 group/btn"
+                      className={`${project.demo ? 'flex-1' : 'w-full'} flex items-center justify-center px-4 py-2 bg-gray-700/50 text-gray-300 rounded-lg hover:bg-gray-600/50 hover:text-white hover:scale-105 transition-all duration-300 group/btn border border-gray-600/50 hover:border-gray-500`}
                     >
                       <Github className="w-4 h-4 mr-2 group-hover/btn:scale-110 transition-transform" />
-                      GitHub
+                      Code
                     </a>
                   </div>
                 </div>
@@ -304,47 +317,60 @@ const Projects: React.FC<ProjectsProps> = ({ id, onSectionInView }) => {
                   delay: index * 0.1,
                   ease: "easeOut"
                 }}
-                className="group relative"
+                className="group relative cursor-pointer"
               >
-                {/* Glow effect */}
-                <div className={`absolute inset-0 bg-gradient-to-r ${project.gradient} rounded-2xl blur-xl opacity-20 group-hover:opacity-30 transition-all duration-300`} />
+                {/* Enhanced Glow effect */}
+                <div className={`absolute inset-0 bg-gradient-to-r ${project.gradient} rounded-2xl blur-xl opacity-20 group-hover:opacity-50 transition-all duration-500`} />
+                <div className={`absolute inset-0 bg-gradient-to-r ${project.gradient} rounded-2xl blur-2xl opacity-0 group-hover:opacity-25 transition-all duration-500`} />
+                
                 {/* Card */}
-                <div className="relative bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-6 hover:border-gray-600 transition-all duration-300 group-hover:transform group-hover:scale-105">
+                <div className="relative bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-6 hover:border-[#00f8e1]/50 transition-all duration-500 group-hover:transform group-hover:scale-105 group-hover:shadow-2xl group-hover:shadow-[#00f8e1]/20 h-full flex flex-col">
                   <div className="flex items-start justify-between mb-4">
-                    <div className={`p-3 rounded-xl bg-gradient-to-r ${project.gradient} text-white`}>
+                    <div className={`p-3 rounded-xl bg-gradient-to-r ${project.gradient} text-white group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg`}>
                       {project.icon}
                     </div>
                   </div>
-                  <h3 className="text-xl font-bold text-white mb-3 group-hover:text-gray-100 transition-colors">
+                  
+                  <h3 className="text-xl font-bold text-white mb-3 group-hover:text-[#00f8e1] transition-colors duration-300">
                     {project.title}
                   </h3>
-                  <p className="text-gray-300 mb-4 leading-relaxed">
+                  
+                  <p className="text-gray-300 mb-4 leading-relaxed flex-grow">
                     {project.description}
                   </p>
+                  
+                  {/* Tech Stack Badges */}
                   <div className="flex flex-wrap gap-2 mb-6">
                     {project.tech.map((tech) => (
-                      <span key={tech} className="px-3 py-1 text-xs bg-gray-700/50 text-gray-300 rounded-full border border-gray-600/50">{tech}</span>
+                      <span 
+                        key={tech} 
+                        className="px-3 py-1 text-xs bg-gray-700/50 text-gray-300 rounded-full border border-gray-600/50 hover:border-[#00f8e1]/50 hover:text-[#00f8e1] transition-all duration-300 cursor-pointer"
+                      >
+                        {tech}
+                      </span>
                     ))}
                   </div>
-                  <div className="flex gap-4">
+                  
+                  {/* Action Buttons */}
+                  <div className="flex gap-3 mt-auto">
                     <a
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center px-4 py-2 bg-gray-700/50 text-gray-300 rounded-lg hover:bg-gray-600/50 hover:text-white transition-all duration-300 group/btn"
+                      className={`${project.linkedin ? 'flex-1' : 'w-full'} flex items-center justify-center px-4 py-2 bg-gray-700/50 text-gray-300 rounded-lg hover:bg-gray-600/50 hover:text-white hover:scale-105 transition-all duration-300 group/btn border border-gray-600/50 hover:border-gray-500`}
                     >
                       <Github className="w-4 h-4 mr-2 group-hover/btn:scale-110 transition-transform" />
-                      GitHub
+                      Code
                     </a>
                     {project.linkedin && (
                       <a
                         href={project.linkedin}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center px-4 py-2 bg-gray-700/50 text-gray-300 rounded-lg hover:bg-gray-600/50 hover:text-white transition-all duration-300 group/btn"
+                        className="flex-1 flex items-center justify-center px-4 py-2 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-lg hover:from-blue-600 hover:to-blue-700 hover:scale-105 transition-all duration-300 group/btn shadow-lg hover:shadow-blue-500/25"
                       >
                         <ExternalLink className="w-4 h-4 mr-2 group-hover/btn:scale-110 transition-transform" />
-                        LinkedIn
+                        Post
                       </a>
                     )}
                   </div>

@@ -5,11 +5,18 @@ const CustomCursor: React.FC = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const [trail, setTrail] = useState<Array<{ x: number; y: number; id: number }>>([]);
 
   useEffect(() => {
     const updateMousePosition = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
       setIsVisible(true);
+      
+      // Add to trail
+      setTrail(prev => {
+        const newTrail = [...prev, { x: e.clientX, y: e.clientY, id: Date.now() }];
+        return newTrail.slice(-8); // Keep only last 8 positions
+      });
     };
 
     const handleMouseLeave = () => {
@@ -23,7 +30,7 @@ const CustomCursor: React.FC = () => {
     // Add event listeners for interactive elements
     const addHoverListeners = () => {
       const interactiveElements = document.querySelectorAll(
-        'button, a, [role="button"], input, textarea, select, .cursor-pointer'
+        'button, a, [role="button"], input, textarea, select, .cursor-pointer, .group'
       );
 
       interactiveElements.forEach((element) => {
@@ -93,27 +100,109 @@ const CustomCursor: React.FC = () => {
       {/* Ripple effect on hover */}
       {isHovering && (
         <motion.div
-          className="fixed top-0 left-0 pointer-events-none z-[9998]"
-          initial={{ scale: 0, opacity: 0.8 }}
-          animate={{ 
+            x: mousePosition.x - 12,
+            y: mousePosition.y - 12,
+            scale: isHovering ? 2 : 1,
             scale: 2, 
             opacity: 0,
             x: mousePosition.x - 15,
-            y: mousePosition.y - 15,
-          }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
+            stiffness: 400,
+            damping: 25,
+            mass: 0.3,
           key={`${mousePosition.x}-${mousePosition.y}`}
         >
           <div
-            className="w-8 h-8 rounded-full border border-[#00f8e1]"
-            style={{
-              background: 'radial-gradient(circle, rgba(0,248,225,0.1) 0%, transparent 70%)',
-            }}
-          />
+            className="w-6 h-6 rounded-full border-2 border-[#00f8e1] relative"
+                ? '0 0 30px rgba(0,248,225,0.8), 0 0 60px rgba(0,248,225,0.4), 0 0 90px rgba(0,248,225,0.2)'
+                : '0 0 15px rgba(0,248,225,0.6), 0 0 30px rgba(0,248,225,0.3)',
+                ? 'radial-gradient(circle, rgba(0,248,225,0.4) 0%, rgba(0,248,225,0.2) 50%, transparent 100%)'
+          >
+            {/* Inner glow dot */}
+            <div 
+              className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-1 h-1 bg-[#00f8e1] rounded-full"
+              style={{
+                boxShadow: '0 0 8px rgba(0,248,225,1)',
+              }}
+            />
+          </div>
         </motion.div>
       )}
     </>
   );
 };
 
-export default CustomCursor;
+        {/* Trail effect */}
+        {trail.map((point, index) => (
+          <motion.div
+            key={point.id}
+            className="fixed top-0 left-0 pointer-events-none z-[9998]"
+            initial={{ 
+              x: point.x - 3,
+              y: point.y - 3,
+              scale: 1,
+              opacity: 0.6
+            }}
+            animate={{ 
+              scale: 0,
+              opacity: 0
+            }}
+            transition={{ 
+              duration: 0.8,
+              delay: index * 0.05,
+              ease: "easeOut"
+            }}
+          >
+            <div
+              className="w-1.5 h-1.5 rounded-full bg-[#00f8e1]"
+              style={{
+                boxShadow: '0 0 6px rgba(0,248,225,0.8)',
+                opacity: (index + 1) / trail.length * 0.6,
+              }}
+            />
+          </motion.div>
+        ))}
+
+        {/* Enhanced ripple effect on hover */}
+        {isHovering && (
+          <>
+            <motion.div
+              className="fixed top-0 left-0 pointer-events-none z-[9997]"
+              initial={{ scale: 0, opacity: 0.6 }}
+              animate={{ 
+                scale: 3, 
+                opacity: 0,
+                x: mousePosition.x - 20,
+                y: mousePosition.y - 20,
+              }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              key={`ripple1-${mousePosition.x}-${mousePosition.y}`}
+            >
+              <div
+                className="w-10 h-10 rounded-full border border-[#00f8e1]"
+                style={{
+                  background: 'radial-gradient(circle, rgba(0,248,225,0.1) 0%, transparent 70%)',
+                }}
+              />
+            </motion.div>
+            
+            <motion.div
+              className="fixed top-0 left-0 pointer-events-none z-[9996]"
+              initial={{ scale: 0, opacity: 0.4 }}
+              animate={{ 
+                scale: 4, 
+                opacity: 0,
+                x: mousePosition.x - 25,
+                y: mousePosition.y - 25,
+              }}
+              transition={{ duration: 1.2, ease: "easeOut", delay: 0.1 }}
+              key={`ripple2-${mousePosition.x}-${mousePosition.y}`}
+            >
+              <div
+                className="w-12 h-12 rounded-full border border-[#00f8e1]/50"
+                style={{
+                  background: 'radial-gradient(circle, rgba(0,248,225,0.05) 0%, transparent 70%)',
+                }}
+              />
+            </motion.div>
+          </>
+        )}

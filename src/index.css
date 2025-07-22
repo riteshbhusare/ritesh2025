@@ -2,6 +2,39 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Enhanced glow animations */
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(0, 248, 225, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(0, 248, 225, 0.8), 0 0 40px rgba(0, 248, 225, 0.4);
+  }
+}
+
+.glow-pulse {
+  animation: glow-pulse 2s ease-in-out infinite;
+}
+
+/* Button hover effects */
+@keyframes button-glow {
+  0% {
+    box-shadow: 0 0 5px rgba(0, 248, 225, 0.2);
+  }
+  100% {
+    box-shadow: 0 0 20px rgba(0, 248, 225, 0.6), 0 0 30px rgba(0, 248, 225, 0.4);
+  }
+}
+
+.button-glow:hover {
+  animation: button-glow 0.3s ease-out forwards;
+}
+
 /* Hide default cursor on desktop */
 @media (min-width: 768px) {
   * {
@@ -17,4 +50,3 @@
   [style*="resize"] {
     cursor: nw-resize !important;
   }
-}
