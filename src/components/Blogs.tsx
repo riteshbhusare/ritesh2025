@@ -25,8 +25,6 @@ const Blogs: React.FC<BlogsProps> = ({ id, onSectionInView }) => {
       title: "Why Companies Use Kubernetes",
       description: "Explore how Kubernetes revolutionizes container orchestration and why enterprises are adopting it for scalable, resilient applications.",
       category: "DevOps",
-      date: "Dec 15, 2024",
-      readTime: "5 min read",
       url: "https://riteshbhusare.hashnode.dev/why-companies-use-kubernetes",
       gradient: "from-blue-500 to-cyan-500"
     },
@@ -34,8 +32,6 @@ const Blogs: React.FC<BlogsProps> = ({ id, onSectionInView }) => {
       title: "Why Companies Use Linux",
       description: "Discover the reasons behind Linux's dominance in enterprise environments and its role in modern infrastructure.",
       category: "Linux",
-      date: "Dec 10, 2024", 
-      readTime: "4 min read",
       url: "https://riteshbhusare.hashnode.dev/why-companies-use-linux",
       gradient: "from-green-500 to-teal-500"
     },
@@ -43,10 +39,57 @@ const Blogs: React.FC<BlogsProps> = ({ id, onSectionInView }) => {
       title: "Why Companies Use Docker",
       description: "Learn how Docker transforms application deployment and why containerization has become essential for modern development.",
       category: "DevOps",
-      date: "Dec 5, 2024",
-      readTime: "6 min read", 
       url: "https://riteshbhusare.hashnode.dev/why-companies-use-docker",
       gradient: "from-purple-500 to-pink-500"
+    },
+    {
+      title: "How AWS Powers Industry Giants",
+      description: "Discover how Netflix, Spotify, Coca-Cola, and Samsung use AWS to deliver innovation at scale across entertainment, beverages, and electronics.",
+      category: "Cloud",
+      url: "https://www.linkedin.com/posts/ritesh-bhusare-5a209330b_a-blog-on-the-aws-user-amazon-web-services-activity-7352593106082365440-vdMo",
+      gradient: "from-orange-500 to-yellow-500"
+    },
+    {
+      title: "Containerizing Flask with Docker",
+      description: "See how Flask apps run seamlessly inside Docker containers, improving portability and simplifying deployment.",
+      category: "DevOps",
+      url: "https://www.linkedin.com/posts/ritesh-bhusare-5a209330b_docker-flask-python-activity-7352555433837977600-5hDn",
+      gradient: "from-indigo-500 to-blue-500"
+    },
+    {
+      title: "Speed and Reliability in DevOps",
+      description: "Understand the importance of achieving both speed and reliability in modern DevOps pipelines and workflows.",
+      category: "DevOps",
+      url: "https://www.linkedin.com/posts/ritesh-bhusare-5a209330b_in-todays-tech-world-speed-reliability-activity-7350378771754926080-4Efz",
+      gradient: "from-red-500 to-pink-500"
+    },
+    {
+      title: "My LinuxWorld Training Experience",
+      description: "A look into hands-on training with Linux, Python, and real-world DevOps use cases at LinuxWorld Workshop.",
+      category: "Linux",
+      url: "https://www.linkedin.com/posts/ritesh-bhusare-5a209330b_linuxworld-python-linux-activity-7350173412130025472-7d64",
+      gradient: "from-emerald-500 to-green-500"
+    },
+    {
+      title: "Linux Customization Rocks",
+      description: "Learn how Linux customization helps in building efficient, tailored environments, appreciated by community mentors like Vimal Daga Sir.",
+      category: "Linux",
+      url: "https://www.linkedin.com/posts/ritesh-bhusare-5a209330b_linux-customization-vimaldagasir-activity-7349988443487109120-Oc4L",
+      gradient: "from-lime-500 to-green-500"
+    },
+    {
+      title: "Building a Custom Linux Desktop",
+      description: "Explore the process of setting up a clean, fast, and fully customized Linux desktop experience for daily development.",
+      category: "Linux",
+      url: "https://www.linkedin.com/posts/ritesh-bhusare-5a209330b_linux-linuxdesktop-linuxuser-activity-7349803477537075200-ZRFz",
+      gradient: "from-teal-500 to-cyan-500"
+    },
+    {
+      title: "LinuxWorld 2025 – My Journey",
+      description: "Insights from attending the LinuxWorld 2025 workshop, where we explored Linux fundamentals and real-world DevOps applications.",
+      category: "Linux",
+      url: "https://www.linkedin.com/posts/ritesh-bhusare-5a209330b_linux-linuxworld-linux2025-activity-7349614730912620544-VH5W",
+      gradient: "from-violet-500 to-purple-500"
     }
   ];
 
@@ -107,18 +150,6 @@ const Blogs: React.FC<BlogsProps> = ({ id, onSectionInView }) => {
                 <p className="text-gray-300 mb-6 leading-relaxed flex-grow">
                   {blog.description}
                 </p>
-                
-                {/* Meta Information */}
-                <div className="flex items-center gap-4 mb-6 text-sm text-gray-400">
-                  <div className="flex items-center gap-1">
-                    <Calendar className="w-4 h-4" />
-                    <span>{blog.date}</span>
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <Clock className="w-4 h-4" />
-                    <span>{blog.readTime}</span>
-                  </div>
-                </div>
                 
                 {/* Read Article Button */}
                 <a
