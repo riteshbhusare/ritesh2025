@@ -3,13 +3,70 @@ import { motion } from 'framer-motion';
 import { Download, MapPin, Mail, Phone } from 'lucide-react';
 import { useInView } from 'react-intersection-observer';
 import selfImg from '../assets/self.jpg';
-import StarBackground from './StarBackground';
 
 interface HeroProps {
   id: string;
   onSectionInView: (section: string) => void;
   onDownloadResume: () => void;
 }
+
+const TypewriterText: React.FC = () => {
+  const titles = [
+    "Cloud Enthusiast",
+    "DevOps Learner", 
+    "Tech Explorer"
+  ];
+  
+  const [currentTitleIndex, setCurrentTitleIndex] = useState(0);
+  const [displayedText, setDisplayedText] = useState('');
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
+
+  useEffect(() => {
+    const currentTitle = titles[currentTitleIndex];
+    
+    if (isPaused) {
+      const pauseTimer = setTimeout(() => {
+        setIsPaused(false);
+        setIsDeleting(true);
+      }, 2000); // Pause for 2 seconds
+      return () => clearTimeout(pauseTimer);
+    }
+
+    const timer = setTimeout(() => {
+      if (!isDeleting) {
+        // Typing
+        if (displayedText.length < currentTitle.length) {
+          setDisplayedText(currentTitle.slice(0, displayedText.length + 1));
+        } else {
+          setIsPaused(true);
+        }
+      } else {
+        // Deleting
+        if (displayedText.length > 0) {
+          setDisplayedText(displayedText.slice(0, -1));
+        } else {
+          setIsDeleting(false);
+          setCurrentTitleIndex((prev) => (prev + 1) % titles.length);
+        }
+      }
+    }, isDeleting ? 50 : 100); // Faster deletion, slower typing
+
+    return () => clearTimeout(timer);
+  }, [displayedText, isDeleting, isPaused, currentTitleIndex, titles]);
+
+  return (
+    <motion.span
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      className="text-xl md:text-2xl font-medium block min-h-[2.5rem]"
+      style={{ color: '#00f8e1' }}
+    >
+      {displayedText}
+      <span className="animate-pulse ml-1" style={{ color: '#00f8e1' }}>|</span>
+    </motion.span>
+  );
+};
 
 const Hero: React.FC<HeroProps> = ({ id, onSectionInView, onDownloadResume }) => {
   const { ref, inView } = useInView({
@@ -51,8 +108,8 @@ const Hero: React.FC<HeroProps> = ({ id, onSectionInView, onDownloadResume }) =>
                   Ritesh Bhusare
                 </span>
               </motion.h1>
-              {/* Typing animation under the name */}
-              <TypingAnimation text="Aspiring Cloud Engineer | DevOps Enthusiast" />
+              {/* Typewriter animation under the name */}
+              <TypewriterText />
             </div>
 
             {/* Download Resume Button */}
@@ -104,34 +161,6 @@ const Hero: React.FC<HeroProps> = ({ id, onSectionInView, onDownloadResume }) =>
         </div>
       </div>
     </section>
-  );
-};
-
-const TypingAnimation: React.FC<{ text: string }> = ({ text }) => {
-  const [displayed, setDisplayed] = useState('');
-  useEffect(() => {
-    let i = 0;
-    setDisplayed('');
-    let interval: ReturnType<typeof setInterval>;
-    const type = () => {
-      interval = setInterval(() => {
-        setDisplayed((prev) => (i < text.length ? prev + text[i] : prev));
-        i++;
-        if (i >= text.length) {
-          clearInterval(interval);
-          setTimeout(() => {
-            i = 0;
-            setDisplayed('');
-            type();
-          }, 1200);
-        }
-      }, 60);
-    };
-    type();
-    return () => clearInterval(interval);
-  }, [text]);
-  return (
-    <span className="text-xl md:text-2xl text-gray-300 font-medium block min-h-[2.5rem]">{displayed}</span>
   );
 };
 

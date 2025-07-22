@@ -1,3 +1,20 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Hide default cursor on desktop */
+@media (min-width: 768px) {
+  * {
+    cursor: none !important;
+  }
+  
+  /* Keep cursor for text selection and inputs */
+  input, textarea, [contenteditable] {
+    cursor: text !important;
+  }
+  
+  /* Keep cursor for resize handles */
+  [style*="resize"] {
+    cursor: nw-resize !important;
+  }
+}

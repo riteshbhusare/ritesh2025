@@ -8,6 +8,7 @@ import Projects from './components/Projects';
 import Contact from './components/Contact';
 import Navigation from './components/Navigation';
 import ScrollProgress from './components/ScrollProgress';
+import CustomCursor from './components/CustomCursor';
 
 function App() {
   const [activeSection, setActiveSection] = useState('hero');
@@ -36,6 +37,8 @@ function App() {
 
   return (
     <div className="bg-black text-white overflow-x-hidden">
+      <CustomCursor />
+      
       <Navigation 
         activeSection={activeSection}
         onSectionClick={scrollToSection}
