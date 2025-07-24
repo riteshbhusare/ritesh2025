@@ -184,6 +184,20 @@ const Projects: React.FC<ProjectsProps> = ({ id, onSectionInView }) => {
   const linuxWorldCategories = ['Python', 'Linux', 'Docker', 'Git & GitHub', 'JavaScript + Docker Based Task'];
   const [activeCategory, setActiveCategory] = React.useState('Python');
 
+  // Helper to get a color from the gradient string for border/button
+  const getMainColor = (gradient: string) => {
+    if (gradient.includes('purple')) return '#a855f7';
+    if (gradient.includes('pink')) return '#ec4899';
+    if (gradient.includes('green')) return '#22d3ee';
+    if (gradient.includes('teal')) return '#14b8a6';
+    if (gradient.includes('blue')) return '#3b82f6';
+    if (gradient.includes('orange')) return '#f59e42';
+    if (gradient.includes('red')) return '#ef4444';
+    if (gradient.includes('yellow')) return '#facc15';
+    if (gradient.includes('indigo')) return '#6366f1';
+    return '#a3a3a3';
+  };
+
   return (
     <>
       <section
@@ -204,76 +218,73 @@ const Projects: React.FC<ProjectsProps> = ({ id, onSectionInView }) => {
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {projects.map((project, index) => (
-              <motion.div
-                key={project.title}
-                initial={{ opacity: 0, y: 50 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ 
-                  duration: 0.6, 
-                  delay: index * 0.1,
-                  ease: "easeOut"
-                }}
-                className="group relative cursor-pointer"
-              >
-                {/* Enhanced Glow effect */}
-                <div className={`absolute inset-0 bg-gradient-to-r ${project.gradient} rounded-2xl blur-xl opacity-20 group-hover:opacity-60 transition-all duration-500`} />
-                <div className={`absolute inset-0 bg-gradient-to-r ${project.gradient} rounded-2xl blur-2xl opacity-0 group-hover:opacity-30 transition-all duration-500`} />
-                
-                {/* Card */}
-                <div className="relative bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-6 hover:border-[#00f8e1]/50 transition-all duration-500 group-hover:transform group-hover:scale-105 group-hover:shadow-2xl group-hover:shadow-[#00f8e1]/20 h-full flex flex-col">
-                  <div className="flex items-start justify-between mb-4">
-                    <div className={`p-3 rounded-xl bg-gradient-to-r ${project.gradient} text-white group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg`}>
-                      {project.icon}
+            {projects.map((project, index) => {
+              const mainColor = getMainColor(project.gradient);
+              return (
+                <motion.div
+                  key={project.title}
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={inView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.6, delay: index * 0.1, ease: 'easeOut' }}
+                  className="group relative cursor-pointer"
+                >
+                  {/* Soft golden or matching glow on hover */}
+                  <div className={`absolute inset-0 bg-gradient-to-r ${project.gradient} rounded-2xl blur-xl opacity-20 group-hover:opacity-50 transition-all duration-500`} />
+                  {/* Glassy card with colored border */}
+                  <div className="absolute inset-0 rounded-2xl group-hover:shadow-[0_0_32px_8px_rgba(255,215,0,0.12)] transition-all duration-500" />
+                  {/* Card */}
+                  <div
+                    className="relative bg-gray-900/60 backdrop-blur-md border-2 rounded-2xl p-6 h-full flex flex-col"
+                    style={{ borderColor: mainColor }}
+                  >
+                    <div className="flex items-start justify-between mb-4">
+                      <div className={`p-3 rounded-xl bg-gradient-to-r ${project.gradient} text-white group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg`}>
+                        {project.icon}
+                      </div>
                     </div>
-                  </div>
-                  
-                  <h3 className="text-xl font-bold text-white mb-3 group-hover:text-[#00f8e1] transition-colors duration-300">
-                    {project.title}
-                  </h3>
-                  
-                  <p className="text-gray-300 mb-4 leading-relaxed flex-grow">
-                    {project.description}
-                  </p>
-                  
-                  {/* Tech Stack Badges */}
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {project.tech.map((tech) => (
-                      <span
-                        key={tech}
-                        className="px-3 py-1 text-xs bg-gray-700/50 text-gray-300 rounded-full border border-gray-600/50 hover:border-[#00f8e1]/50 hover:text-[#00f8e1] transition-all duration-300 cursor-pointer"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                  
-                  {/* Action Buttons */}
-                  <div className="flex gap-3 mt-auto">
-                    {project.demo && (
+                    <h3 className="text-xl font-bold text-white mb-3">
+                      {project.title}
+                    </h3>
+                    <p className="text-gray-200 mb-4 leading-relaxed flex-grow">
+                      {project.description}
+                    </p>
+                    {/* Tech Stack Badges */}
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {project.tech.map((tech) => (
+                        <span
+                          key={tech}
+                          className="px-2 py-0.5 text-xs bg-gray-700/60 text-white rounded-full border border-gray-600/50"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                    {/* Action Buttons */}
+                    <div className="flex gap-2 mt-auto">
+                      {project.demo && (
+                        <a
+                          href={project.demo}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex-1 flex items-center justify-center px-3 py-2 rounded-lg font-semibold text-white text-sm shadow-md transition-all duration-300 group/btn"
+                          style={{ background: mainColor }}
+                        >
+                          <ExternalLink className="w-5 h-5" />
+                        </a>
+                      )}
                       <a
-                        href={project.demo}
+                        href={project.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex-1 flex items-center justify-center px-4 py-2 bg-gradient-to-r from-[#00f8e1] to-cyan-400 text-black font-semibold rounded-lg hover:from-[#00f8e1]/90 hover:to-cyan-400/90 hover:scale-105 transition-all duration-300 group/btn shadow-lg hover:shadow-[#00f8e1]/25"
+                        className="flex-1 flex items-center justify-center px-3 py-2 rounded-lg font-semibold text-white text-sm shadow-md transition-all duration-300 group/btn bg-gray-800/80 hover:bg-gray-700/90"
                       >
-                        <ExternalLink className="w-4 h-4 mr-2 group-hover/btn:scale-110 transition-transform" />
-                        Demo
+                        <Github className="w-5 h-5" />
                       </a>
-                    )}
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`${project.demo ? 'flex-1' : 'w-full'} flex items-center justify-center px-4 py-2 bg-gray-700/50 text-gray-300 rounded-lg hover:bg-gray-600/50 hover:text-white hover:scale-105 transition-all duration-300 group/btn border border-gray-600/50 hover:border-gray-500`}
-                    >
-                      <Github className="w-4 h-4 mr-2 group-hover/btn:scale-110 transition-transform" />
-                      Code
-                    </a>
+                    </div>
                   </div>
-                </div>
-              </motion.div>
-            ))}
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -291,7 +302,6 @@ const Projects: React.FC<ProjectsProps> = ({ id, onSectionInView }) => {
               LinuxWorld Projects
             </h2>
           </motion.div>
-
           {/* Tabs for categories */}
           <div className="flex flex-wrap justify-center gap-4 mb-10">
             {linuxWorldCategories.map((cat) => (
@@ -304,79 +314,79 @@ const Projects: React.FC<ProjectsProps> = ({ id, onSectionInView }) => {
               </button>
             ))}
           </div>
-
-          {/* Project cards filtered by category, using same card/animation as Featured Projects */}
-          <div className="grid md:grid-cols-2 gap-8">
-            {linuxWorldProjects.filter(p => p.category === activeCategory).map((project, index) => (
-              <motion.div
-                key={project.title}
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ 
-                  duration: 0.6, 
-                  delay: index * 0.1,
-                  ease: "easeOut"
-                }}
-                className="group relative cursor-pointer"
-              >
-                {/* Enhanced Glow effect */}
-                <div className={`absolute inset-0 bg-gradient-to-r ${project.gradient} rounded-2xl blur-xl opacity-20 group-hover:opacity-50 transition-all duration-500`} />
-                <div className={`absolute inset-0 bg-gradient-to-r ${project.gradient} rounded-2xl blur-2xl opacity-0 group-hover:opacity-25 transition-all duration-500`} />
-                
-                {/* Card */}
-                <div className="relative bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-6 hover:border-[#00f8e1]/50 transition-all duration-500 group-hover:transform group-hover:scale-105 group-hover:shadow-2xl group-hover:shadow-[#00f8e1]/20 h-full flex flex-col">
-                  <div className="flex items-start justify-between mb-4">
-                    <div className={`p-3 rounded-xl bg-gradient-to-r ${project.gradient} text-white group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg`}>
-                      {project.icon}
+          {/* Project cards filtered by category, using new style and grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {linuxWorldProjects.filter(p => p.category === activeCategory).map((project, index) => {
+              const mainColor = getMainColor(project.gradient);
+              return (
+                <motion.div
+                  key={project.title}
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ 
+                    duration: 0.6, 
+                    delay: index * 0.1,
+                    ease: "easeOut"
+                  }}
+                  className="group relative cursor-pointer"
+                >
+                  {/* Soft golden or matching glow on hover */}
+                  <div className={`absolute inset-0 bg-gradient-to-r ${project.gradient} rounded-2xl blur-xl opacity-20 group-hover:opacity-50 transition-all duration-500`} />
+                  {/* Glassy card with colored border */}
+                  <div className="absolute inset-0 rounded-2xl group-hover:shadow-[0_0_32px_8px_rgba(255,215,0,0.12)] transition-all duration-500" />
+                  {/* Card */}
+                  <div
+                    className="relative bg-gray-900/60 backdrop-blur-md border-2 rounded-2xl p-4 hover:border-[#ffd764]/60 transition-all duration-500 group-hover:transform group-hover:scale-105 group-hover:shadow-2xl group-hover:shadow-[#ffd764]/20 h-full flex flex-col min-h-[180px]"
+                    style={{ borderColor: mainColor }}
+                  >
+                    <div className="flex items-start justify-between mb-2">
+                      <div className={`p-2 rounded-xl bg-gradient-to-r ${project.gradient} text-white group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg`}>
+                        {project.icon}
+                      </div>
                     </div>
-                  </div>
-                  
-                  <h3 className="text-xl font-bold text-white mb-3 group-hover:text-[#00f8e1] transition-colors duration-300">
-                    {project.title}
-                  </h3>
-                  
-                  <p className="text-gray-300 mb-4 leading-relaxed flex-grow">
-                    {project.description}
-                  </p>
-                  
-                  {/* Tech Stack Badges */}
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {project.tech.map((tech) => (
-                      <span 
-                        key={tech} 
-                        className="px-3 py-1 text-xs bg-gray-700/50 text-gray-300 rounded-full border border-gray-600/50 hover:border-[#00f8e1]/50 hover:text-[#00f8e1] transition-all duration-300 cursor-pointer"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                  
-                  {/* Action Buttons */}
-                  <div className="flex gap-3 mt-auto">
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`${project.linkedin ? 'flex-1' : 'w-full'} flex items-center justify-center px-4 py-2 bg-gray-700/50 text-gray-300 rounded-lg hover:bg-gray-600/50 hover:text-white hover:scale-105 transition-all duration-300 group/btn border border-gray-600/50 hover:border-gray-500`}
-                    >
-                      <Github className="w-4 h-4 mr-2 group-hover/btn:scale-110 transition-transform" />
-                      Code
-                    </a>
-                    {project.linkedin && (
+                    <h3 className="text-lg font-bold text-white mb-2 group-hover:text-[#ffd764] transition-colors duration-300">
+                      {project.title}
+                    </h3>
+                    <p className="text-white mb-2 leading-snug flex-grow" style={{whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'}}>
+                      {project.description}
+                    </p>
+                    {/* Tech Stack Badges */}
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {project.tech.map((tech) => (
+                        <span 
+                          key={tech} 
+                          className="px-2 py-0.5 text-xs bg-gray-700/60 text-white rounded-full border border-gray-600/50"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                    {/* Action Buttons */}
+                    <div className="flex gap-2 mt-auto">
                       <a
-                        href={project.linkedin}
+                        href={project.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex-1 flex items-center justify-center px-4 py-2 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-lg hover:from-blue-600 hover:to-blue-700 hover:scale-105 transition-all duration-300 group/btn shadow-lg hover:shadow-blue-500/25"
+                        className={`${project.linkedin ? 'flex-1' : 'w-full'} flex items-center justify-center px-3 py-2 rounded-lg font-semibold text-white text-sm shadow-md transition-all duration-300 group/btn bg-gray-800/80 hover:bg-gray-700/90`}
                       >
-                        <ExternalLink className="w-4 h-4 mr-2 group-hover/btn:scale-110 transition-transform" />
-                        Post
+                        <Github className="w-5 h-5" />
                       </a>
-                    )}
+                      {project.linkedin && (
+                        <a
+                          href={project.linkedin}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex-1 flex items-center justify-center px-3 py-2 rounded-lg font-semibold text-white text-sm shadow-md transition-all duration-300 group/btn"
+                          style={{ background: mainColor }}
+                        >
+                          <ExternalLink className="w-5 h-5" />
+                        </a>
+                      )}
+                    </div>
                   </div>
-                </div>
-              </motion.div>
-            ))}
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>
